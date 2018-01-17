@@ -79,7 +79,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    JX3Wall
+                    Welcome to JX3Wall!
                 </div>
 
                 <div class="links">
