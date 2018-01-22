@@ -1,5 +1,5 @@
 @extends('layout.main')
-@section('content)
+@section('content')
         <div class="col-sm-8 blog-main">
             <form action="/posts/62" method="POST">
                 <input type="hidden" name="_method" value="PUT">
