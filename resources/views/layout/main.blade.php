@@ -17,8 +17,8 @@
 
 
     <!-- Custom styles for this template -->
-    <link href="css/blog.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="css/wangEditor.min.css">
+    <link href="/css/blog.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/css/wangEditor.min.css">
 
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -53,7 +53,7 @@
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
 <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="js/wangEditor.min.js"></script>
-<script src="js/ylaravel.js"></script>
+<script type="text/javascript" src="/js/wangEditor.min.js"></script>
+<script src="/js/ylaravel.js"></script>
 </body>
 </html>
