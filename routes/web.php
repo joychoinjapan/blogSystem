@@ -21,7 +21,7 @@ Route::get('/', function () {
  * 文章モジュール
  */
 // 文章リストを表示
-Route::get('posts','PostController@index');
+Route::get('/posts','PostController@index');
 
 //文章を作成 1.作成画面
 Route::get('/posts/create','PostController@create');

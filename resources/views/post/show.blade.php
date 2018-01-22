@@ -1,5 +1,5 @@
-@extends("layout.main")
-@section("content")
+@extends('layout.main')
+@section('content')
 <div class="col-sm-8 blog-main">
             <div class="blog-post">
                 <div style="display:inline-flex">
