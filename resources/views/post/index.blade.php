@@ -34,20 +34,16 @@
             <div>
                 @foreach($posts as $post)
                 <div class="blog-post">
-                    <h2 class="blog-post-title"><a href="/posts/62" >{{$post['title']}}</a></h2>
-                    <p class="blog-post-meta">May 14, 2017 by <a href="/user/5">Kassandra Ankunding2</a></p>
+                    <h2 class="blog-post-title"><a href="/posts/{{$post->id}}" >{{$post->title}}</a></h2>
+                    <p class="blog-post-meta">{{$post->created_at->toFormattedDateString()}} <a href="/user/5">Kassandra Ankunding2</a></p>
 
-                    <p>你好你好你好你好你好你好你好你1好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好...
+                    <p>{{str_limit($post->content,100,'...')}}
                     <p class="blog-post-meta">赞 0  | 评论 0</p>
                 </div>
                 @endforeach
 
 
-                <ul class="pagination">
-
-                    <li class="disabled"><span>&laquo;</span></li>
-                    <li><a href="http://127.0.0.1:8000/posts?page=2" rel="next">&raquo;</a></li>
-                </ul>
+               {{$posts->links()}}
 
             </div><!-- /.blog-main -->
         </div>

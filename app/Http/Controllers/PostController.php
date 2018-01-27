@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Post;
 
 /**
  * Class PostController
@@ -13,12 +14,7 @@ class PostController extends Controller
 {
     // 文章リストを表示
     public function index(){
-        $posts=[
-            ['title'=>'this is title1'],
-            ['title'=>'this is title2'],
-            ['title'=>'this is title3'],
-            ['title'=>'this is title4'],
-            ];
+        $posts=Post::orderBy('created_at','desc')->paginate(6);
 
         return view("post/index",compact('posts'));
     }
