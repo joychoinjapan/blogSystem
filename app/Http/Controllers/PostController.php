@@ -19,8 +19,8 @@ class PostController extends Controller
         return view("post/index",compact('posts'));
     }
     // 文章の詳細を表示
-    public function show(){
-        return view("post/show",['title'=>'this is title','isShow'=>false]);
+    public function show(Post $post){
+        return view("post/show",compact('post'));
 
     }
     //文章を作成
