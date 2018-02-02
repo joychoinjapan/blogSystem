@@ -2,10 +2,11 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
+use App\Model;
 
 //テーブル→posts
 class Post extends Model
 {
     //
+
 }

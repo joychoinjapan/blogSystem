@@ -29,6 +29,8 @@ Route::get('/posts/create','PostController@create');
 //文章を作成 2. 投稿
 Route::post('/posts','PostController@store');
 
+Route::post('/posts/image/upload','PostController@imageUpload');
+
 //文章を削除
 Route::get('/posts/delete','PostController@delete');
 
