@@ -1,12 +1,12 @@
 <ul class="nav navbar-nav navbar-left">
     <li>
-        <a class="blog-nav-item " href="/posts">首页</a>
+        <a class="blog-nav-item " href="{{asset('/posts')}}">首页</a>
     </li>
     <li>
-        <a class="blog-nav-item" href="/posts/create">写文章</a>
+        <a class="blog-nav-item" href="{{asset('/posts/create')}}">写文章</a>
     </li>
     <li>
-        <a class="blog-nav-item" href="/notices">通知</a>
+        <a class="blog-nav-item" href="{{asset('/notices')}}">通知</a>
     </li>
     <li>
         <input name="query" type="text" value="" class="form-control" style="margin-top:10px" placeholder="搜索词">
