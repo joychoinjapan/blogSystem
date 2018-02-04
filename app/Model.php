@@ -10,5 +10,5 @@ class Model extends BaseModel
     //
     protected $guarded;//注入できないフィルド
 
-    protected $fillable=['title','content'];//注入できるフィルド
+    //注入できるフィルド
 }
