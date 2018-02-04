@@ -32,7 +32,7 @@ Route::post('/posts','PostController@store');
 Route::post('/posts/image/upload','PostController@imageUpload');
 
 //文章を削除
-Route::get('/posts/delete','PostController@delete');
+Route::get('/posts/{post}/delete','PostController@delete');
 
 //文章の詳細を表示
 Route::get('/posts/{post}','PostController@show');
@@ -43,3 +43,28 @@ Route::get('/posts/{post}/edit','PostController@edit');
 
 //文章を作成 2. 更新を投稿
 Route::put('/posts/{post}','PostController@update');
+
+
+
+
+/**
+ * アカンウト作成モジュール
+ */
+
+//アカンウト作成トップページ
+Route::get('/register','RegisterController@index');
+//アカウント作成
+Route::post('/register','RegisterController@register');
+
+//ログイントップページ
+Route::get('/login','LoginController@index');
+//ログイン
+Route::post('/login','LoginController@login');
+//ログアウト
+Route::get('/logout','LoginController@logout');
+
+
+//プロフィール
+Route::get('/user/me/setting','UserController@setting');
+//プロフィルを編集し、保存
+Route::post('/user/me/setting','UserController@settingStore');

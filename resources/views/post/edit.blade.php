@@ -12,7 +12,7 @@
                     <label>内容1</label>
                     <textarea id="content" name="content" class="form-control" style="height:400px;max-height:500px;"  placeholder="ここは内容です">{{$post->content}}</textarea>
                     @include('layout.error')
-                    <button type="submit" class="btn btn-default">提交</button>
+                    <button type="submit" class="btn btn-default">投稿</button>
                 </div>
             </form>
             <br>

@@ -79,6 +79,7 @@ class PostController extends Controller
 
         //logic
         $post->title=\request('title');
+        //注意：これは問題点があります：文章のhtmlタグは保存されなくなります！！！
         $post->content=strip_tags(\request('content'));
         $post->save();
 
@@ -90,7 +91,13 @@ class PostController extends Controller
 
 
     //文章を削除
-    public function delete(){}
+    public function delete(Post $post){
+
+        //TODO:ユーザーの認証
+        $post->delete();
+        $url=asset('/posts');
+        return redirect("$url");
+    }
 
 
 
