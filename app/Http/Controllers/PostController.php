@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Post;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * Class PostController
@@ -12,6 +13,8 @@ use App\Post;
  */
 class PostController extends Controller
 {
+
+
     // 文章リストを表示
     public function index(){
         $posts=Post::orderBy('created_at','desc')->paginate(6);
@@ -27,8 +30,12 @@ class PostController extends Controller
     public function create(){
         return view("post/create");
     }
+
     //作った文章を保存、投稿
     public function store(){
+
+
+
         //validate
         $this->validate(request(),[
             //required:このパラメーターは必要です。string:必要なデータ型max/min：最大・最小文字数
@@ -36,7 +43,6 @@ class PostController extends Controller
             'title'=>'required|string|max:100|min:5',
             //errorsを表示,post/create.bladeへ行く
         ]);
-
 
         //dd(\Request::all());
         //dd(request()->all());
@@ -47,19 +53,18 @@ class PostController extends Controller
 //        $post->content=\request('content');
 //        $post->save();
 
+        //user_idを取得
+        $user_id=Auth::id();
         //モデルをデータベースに保存する　方法2
-        $params=['title'=>\request('title'),'content'=>strip_tags(\request('content'))];
+        $params=['title'=>request('title'),'content'=>strip_tags(request('content')),'user_id'=>$user_id];
         $post=Post::create($params);
         return redirect("/posts");
 
     }
-
     public function imageUpload(Request $request){
 
         $path=$request->file('wangEditorH5File')->storePublicly(md5(time()));
         return asset('storage/'.$path);
-
-
         //dd(\request()->all());
 
     }
@@ -71,6 +76,7 @@ class PostController extends Controller
     }
     //文章を更新し、投稿
     public function update(Post $post){
+        $this->authorize('update',$post);
         //validation
         $this->validate(request(),[
             'title'=>'required|string|max:100|min:5',
@@ -92,6 +98,7 @@ class PostController extends Controller
 
     //文章を削除
     public function delete(Post $post){
+        $this->authorize('update',$post);
 
         //TODO:ユーザーの認証
         $post->delete();

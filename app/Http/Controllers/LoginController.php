@@ -9,8 +9,12 @@ use Illuminate\Support\Facades\Redirect;
 
 class LoginController extends Controller
 {
+
     //ログイントップページ
     public function index(){
+        if(Auth::check()){
+        return redirect(asset('/posts'));
+        }
         return view('login.index');
     }
 
@@ -25,9 +29,12 @@ class LoginController extends Controller
         //逻辑
         $user=request(['email','password']);
         $is_remember=boolval(request(['is_remember']));
-        $url=asset('/posts');
+
+
+        //認証されたら文章一覧へ
         if(Auth::attempt($user,$is_remember)){
-            return redirect($url);
+            //dd(Auth::id());
+            return redirect(asset('/posts'));
         }
 
         //渲染
