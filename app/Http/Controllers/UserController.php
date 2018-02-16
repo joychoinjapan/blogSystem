@@ -34,7 +34,7 @@ class UserController extends Controller
 
         if($request->file('avatar')){
             $path=$request->file('avatar')->storePublicly($user->id);
-            $user->avatar=asset('/storage').$path;
+            $user->avatar=asset('/storage').'/'.$path;
         }
 
         $user->save();

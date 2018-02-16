@@ -72,3 +72,10 @@ Route::post('/login','LoginController@login');
 Route::get('/logout','LoginController@logout');
 
 
+/**
+ * コメントモジュール
+ */
+Route::group(['middleware'=>'auth:web'],function (){
+    //コメントを提出
+    Route::post('/posts/{post}/comment','PostController@comment');
+});

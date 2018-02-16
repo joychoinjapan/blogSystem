@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Post;
 use Illuminate\Support\Facades\Auth;
+use App\Comment;
 
 /**
  * Class PostController
@@ -17,12 +18,13 @@ class PostController extends Controller
 
     // 文章リストを表示
     public function index(){
-        $posts=Post::orderBy('created_at','desc')->paginate(6);
+        $posts=Post::orderBy('created_at','desc')->withCount('comments')->paginate(6);
 
         return view("post/index",compact('posts'));
     }
     // 文章の詳細を表示
     public function show(Post $post){
+        $post->load('comments');
         return view("post/show",compact('post'));
 
     }
@@ -98,7 +100,7 @@ class PostController extends Controller
 
     //文章を削除
     public function delete(Post $post){
-        $this->authorize('update',$post);
+        $this->authorize('delete',$post);
 
         //TODO:ユーザーの認証
         $post->delete();
@@ -106,6 +108,22 @@ class PostController extends Controller
         return redirect("$url");
     }
 
+    public function comment(Post $post){
+
+        $this->validate(request(),[
+            'content'=>'required|min:3',
+        ]);
+
+        $comment=new Comment();
+        $comment->user_id=Auth::id();
+        $comment->content=\request('content');
+        $post->comments()->save($comment);
+
+        return back();
+
+    }
+
+    
 
 
 }

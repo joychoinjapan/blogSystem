@@ -13,7 +13,7 @@ class Post extends Model
 
     //ユーザー表と関係付ける
     public function user(){
-        return $this->belongsTo('App\user');
+        return $this->belongsTo('App\User');
     }
 
     //ユーザー表と関係付けるその２
@@ -21,5 +21,10 @@ class Post extends Model
 //    public function user(){
 //        return $this->belongsTo('App\user','user_id','id');
 //    }
+
+    //comment表と関係付ける
+    public function comments(){
+        return $this->hasMany('App\Comment')->orderBy('created_at','desc');
+    }
 
 }
