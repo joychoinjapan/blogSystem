@@ -18,7 +18,11 @@
                 <p class="blog-post-meta">{{$post->created_at->toFormattedDateString()}} <a href="#">{{$post->user->name}}</a></p>
                  {!!$post->content!!}
                 <div>
-                    <a href="{{asset('/posts')}}/{{$post->id}}/zan" type="button" class="btn btn-primary btn-lg">赞</a>
+                    @if($post->zan(\Illuminate\Support\Facades\Auth::id())->exists())
+                    <a href="{{asset('/posts')}}/{{$post->id}}/unzan" type="button" class="btn btn-default btn-lg">いいねを取り消す</a>
+                    @else
+                    <a href="{{asset('/posts')}}/{{$post->id}}/zan" type="button" class="btn btn-primary btn-lg">いいね</a>
+                    @endif
                 </div>
             </div>
 

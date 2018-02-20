@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Post;
 use Illuminate\Support\Facades\Auth;
 use App\Comment;
-
+use App\Zan;
 /**
  * Class PostController
  * @package App\Http\Controllers
@@ -18,7 +18,7 @@ class PostController extends Controller
 
     // 文章リストを表示
     public function index(){
-        $posts=Post::orderBy('created_at','desc')->withCount('comments')->paginate(6);
+        $posts=Post::orderBy('created_at','desc')->withCount(['comments','zans'])->paginate(6);
 
         return view("post/index",compact('posts'));
     }
@@ -119,6 +119,29 @@ class PostController extends Controller
         $comment->content=\request('content');
         $post->comments()->save($comment);
 
+        return back();
+
+    }
+
+
+    //いいねの機能
+    public function zan(Post $post){
+
+        $param=[
+            'user_id'=>Auth::id(),
+            'post_id'=>$post->id
+        ];
+        //先查找是否有这条数据，如果没有我就创建
+
+        Zan::firstOrCreate($param);
+        return back();
+
+    }
+
+    //いいねを取り消す
+    public function unzan(Post $post){
+
+        $post->zan(Auth::id())->delete();
         return back();
 
     }
