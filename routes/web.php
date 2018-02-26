@@ -14,7 +14,13 @@
 Route::get('/',function (){
     return redirect("/login");
 });
+/**
+ * 検索
+ */
 
+Route::group(['middleware'=>'auth:web'],function (){
+    Route::get('/posts/search','PostController@search');
+});
 
 /**
  * 文章モジュール
@@ -89,3 +95,4 @@ Route::group(['middleware'=>'auth:web'],function (){
     Route::get('/posts/{post}/zan','PostController@zan');
     Route::get('/posts/{post}/unzan','PostController@unzan');
 });
+

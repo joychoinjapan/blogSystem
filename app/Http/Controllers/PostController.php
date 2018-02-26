@@ -18,10 +18,13 @@ class PostController extends Controller
 
     // 文章リストを表示
     public function index(){
-        $posts=Post::orderBy('created_at','desc')->withCount(['comments','zans'])->paginate(6);
-
+        //新たしい文章上に並ぶ,$postsは幾つかのオブジェクトを格納する配列です
+        $posts=Post::orderBy('created_at','desc')->withCount(["comments",'zans'])->paginate(6);
         return view("post/index",compact('posts'));
+
     }
+
+
     // 文章の詳細を表示
     public function show(Post $post){
         $post->load('comments');
@@ -146,6 +149,24 @@ class PostController extends Controller
 
     }
 
+
+    public function search(){
+
+        //validation
+        $this->validate(\request(),[
+            'query'=>'required'
+
+        ]);
+
+        //logic
+        $query=\request('query');
+        $posts=Post::search($query)->paginate(2);
+
+        //draw
+        return view("post/search",compact('posts','query'));
+
+
+    }
     
 
 
