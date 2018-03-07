@@ -14,6 +14,7 @@
 Route::get('/',function (){
     return redirect("/login");
 });
+
 /**
  * 検索
  */
@@ -94,5 +95,26 @@ Route::group(['middleware'=>'auth:web'],function (){
     //いいねを押す
     Route::get('/posts/{post}/zan','PostController@zan');
     Route::get('/posts/{post}/unzan','PostController@unzan');
+});
+
+/**
+ * プロフィール
+ */
+
+Route::group(['middleware'=>'auth:web'],function (){
+    Route::get('/user/{user}','UserController@show');
+    Route::post('/user/{user}/fan','UserController@fan');
+    Route::post('/user/{user}/unfan','UserController@unfan');
+});
+
+
+/**
+ * Topic
+ */
+
+Route::group(['middleware'=>'auth:web'],function (){
+    Route::get('/topic/{topic}','TopicController@show');
+    Route::post('/topic/{topic}/submit','TopicController@submit');
+
 });
 

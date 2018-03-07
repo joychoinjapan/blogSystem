@@ -3,7 +3,9 @@
 namespace App;
 
 use App\Model;
+use Illuminate\Database\Eloquent\Builder;
 use Laravel\Scout\Searchable;
+
 
 //テーブル→posts
 class Post extends Model
@@ -21,16 +23,17 @@ class Post extends Model
     public function toSearchableArray()
     {
         return [
-            'title'=>$this->title,
-            'content'=>$this->content
+            'title' => $this->title,
+            'content' => $this->content
 
         ];
     }
 
-    protected $fillable=['title','content','user_id'];
+    protected $fillable = ['title', 'content', 'user_id'];
 
     //ユーザー表と関係付ける
-    public function user(){
+    public function user()
+    {
         return $this->belongsTo('App\User');
     }
 
@@ -41,19 +44,41 @@ class Post extends Model
 //    }
 
     //comment表と関係付ける
-    public function comments(){
-        return $this->hasMany('App\Comment')->orderBy('created_at','desc');
+    public function comments()
+    {
+        return $this->hasMany('App\Comment')->orderBy('created_at', 'desc');
     }
 
     //このユーザーは「いいね」のモデルを保有しているのか
-    public function zan($user_id){
-        return $this->hasOne('App\Zan')->where('user_id',$user_id) ;
+    public function zan($user_id)
+    {
+        return $this->hasOne('App\Zan')->where('user_id', $user_id);
     }
 
     //postごとに全てのzanを取得する
-    public function zans(){
+    public function zans()
+    {
         return $this->hasMany('App\Zan');
 
     }
+
+    public function scopeAuthorBy(Builder $query, $user_id)
+    {
+        return $query->where('user_id', $user_id);
+
+    }
+
+    public function postTopics()
+    {
+        return $this->hasMany(\App\PostTopic::class, 'post_id', 'id');
+    }
+
+    public function scopeTopicNotBy(Builder $query, $topic_id)
+    {
+        return $query->doesntHave('postTopic', 'and', function ($q) use ($topic_id) {
+            $q->where('topic_id', $topic_id);
+        });
+    }
+
 
 }
