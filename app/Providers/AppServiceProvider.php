@@ -19,9 +19,12 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        //param1:dashboard param2:function($view)
         View::composer('layout.sidebar',function ($view){
+            //App/Topicのモデルを全部探し出す。
             $topics=Topic::all();
+            //topicsをviewに渡す　key:topics value:$topics
+            //果只需要传递特定数据而非一个臃肿的数组到视图文件，可以使用 with 辅助函数，示例如下：
            $view->with('topics',$topics);
         });
 

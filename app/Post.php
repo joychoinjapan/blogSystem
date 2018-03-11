@@ -62,20 +62,36 @@ class Post extends Model
 
     }
 
+
+
+    /**
+     * scope1　user_id で指定された作者が書いた文章
+     * @param Builder $query
+     * @param $user_id
+     * @return $this
+     */
     public function scopeAuthorBy(Builder $query, $user_id)
     {
-        return $query->where('user_id', $user_id);
-
+        return $query->where('user_id',$user_id);
     }
 
+    //一つの文章には多数のTopicがついている。
     public function postTopics()
     {
-        return $this->hasMany(\App\PostTopic::class, 'post_id', 'id');
+        return $this->hasMany(PostTopic::class, 'post_id', 'id');
     }
 
+    /**
+     * 指定されたTopicに属しない文章を獲得
+     * @param Builder $query
+     * @param $topic_id
+     * @return Builder|static
+     */
     public function scopeTopicNotBy(Builder $query, $topic_id)
+
     {
-        return $query->doesntHave('postTopic', 'and', function ($q) use ($topic_id) {
+        //query builder：指定されたTopic_idのpostTopicsモデルを獲得
+        return $query->doesntHave('postTopics', 'and', function ($q) use ($topic_id) {
             $q->where('topic_id', $topic_id);
         });
     }

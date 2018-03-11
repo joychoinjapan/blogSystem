@@ -113,7 +113,9 @@ Route::group(['middleware'=>'auth:web'],function (){
  */
 
 Route::group(['middleware'=>'auth:web'],function (){
+    //Topicの詳細ページ
     Route::get('/topic/{topic}','TopicController@show');
+    //具体的にTopicを投稿
     Route::post('/topic/{topic}/submit','TopicController@submit');
 
 });
