@@ -120,3 +120,4 @@ Route::group(['middleware'=>'auth:web'],function (){
 
 });
 
+include_once('admin.php');
