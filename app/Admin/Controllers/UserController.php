@@ -6,13 +6,16 @@
  * Time: 09:53
  */
 namespace App\Admin\Controllers;
+use \App\AdminUser;
 
 
 class UserController extends Controller
 {
     //user list
     public function index(){
-        return view('/admin/user/index');
+
+        $users=AdminUser::paginate(10);
+        return view('/admin/user/index',compact('users'));
     }
 
     // create user activity
@@ -22,6 +25,20 @@ class UserController extends Controller
 
     //store users
     public function store(){
+        //validate
+        $this->validate(request(),[
+           'name'=>'required|min:3',
+            'password'=>'required'
+        ]);
 
+        //logic
+        $name=request('name');
+        $password=bcrypt(request('password'));
+        AdminUser::create(compact('name','password'));
+
+
+        //view
+
+        return redirect("/admin/users");
     }
 }

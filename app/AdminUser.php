@@ -8,4 +8,7 @@ class AdminUser extends Authenticatable
 {
     //
     protected $rememberTokenName='remember_token';
+
+    protected $fillable=['name','password'];
+
 }

@@ -96,5 +96,14 @@ class Post extends Model
         });
     }
 
+    protected static function boot()
+    {
+        parent::boot(); //
+
+        static::addGlobalScope("available",function (Builder $builder){
+            $builder->whereIn('status',[0,1]);
+        });
+    }
+
 
 }

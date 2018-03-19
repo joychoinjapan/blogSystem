@@ -30,9 +30,11 @@ Route::group(['prefix'=>'admin'],function(){
         Route::get('/users','\App\Admin\Controllers\UserController@index');
 
         //create users
-        Route::get('/create','\App\Admin\Controllers\UserController@create');
+        Route::get('/users/create','\App\Admin\Controllers\UserController@create');
         //store users
-        Route::get('/store','\App\Admin\Controllers\UserController@store');
+        Route::post('/users/store','\App\Admin\Controllers\UserController@store');
+
+        //Review
 
 
 
