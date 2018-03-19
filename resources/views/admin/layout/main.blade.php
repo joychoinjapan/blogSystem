@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="csrf-token" content="RPPMc0lhvtynKELDZljXlz9UZI9uNc55ip1P8GCM">
+    <meta name="csrf-token" content="{{csrf_token()}}">
     <title>AdminLTE 2 | Dashboard</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
@@ -84,6 +84,6 @@
 <script src="/adminlte/plugins/slimScroll/jquery.slimscroll.min.js"></script>
 <!-- FastClick -->
 <script src="/adminlte/plugins/fastclick/fastclick.js"></script>
-<script src="/js/admin.js"></script>
+<script src="{{asset('/js/admin.js')}}"></script>
 </body>
 </html>
