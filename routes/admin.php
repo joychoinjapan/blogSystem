@@ -38,9 +38,6 @@ Route::group(['prefix'=>'admin'],function(){
         Route::get('/posts','\App\Admin\Controllers\PostController@index');
         //Review activity
         Route::post('/posts/{post}/status','\App\Admin\Controllers\PostController@status');
-
-
-
     });
 
 
