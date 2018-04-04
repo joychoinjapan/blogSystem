@@ -7,7 +7,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class AdminUser extends Authenticatable
 {
     //
-    protected $rememberTokenName='remember_token';
+    protected $rememberTokenName='';
 
     protected $fillable=['name','password'];
 
