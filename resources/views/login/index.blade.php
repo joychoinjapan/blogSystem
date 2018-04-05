@@ -36,7 +36,7 @@
 
     <form class="form-signin" method="POST" action="{{asset('/login')}}">
         {{csrf_field()}}
-        <h2 class="form-signin-heading">メンバー登録をしている方</h2>
+        <h2 class="form-signIn-heading">メンバー登録をしている方</h2>
         <label for="inputEmail" class="sr-only">メール</label>
         <input type="email" name="email" id="inputEmail" class="form-control" placeholder="メール" required autofocus>
         <label for="inputPassword" class="sr-only">パスワード</label>
