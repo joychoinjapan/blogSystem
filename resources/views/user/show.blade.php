@@ -4,7 +4,7 @@
             <blockquote>
                 <p><img src="{{$user->avatar}}" alt="" class="img-rounded" style="border-radius:500px; height: 40px">{{$user->name}}
                 </p>
-                <footer>关注：{{$user->stars_count}}｜粉丝：{{$user->fans_count}}｜文章：{{$user->posts_count}}</footer>
+                <footer>お気に入り：{{$user->stars_count}}｜フォロワー：{{$user->fans_count}}｜文章：{{$user->posts_count}}</footer>
                 @include('user.badges.like',['target_user'=>$user])
             </blockquote>
         </div>
@@ -12,8 +12,8 @@
             <div class="nav-tabs-custom">
                 <ul class="nav nav-tabs">
                     <li class="active"><a href="#tab_1" data-toggle="tab" aria-expanded="true">文章</a></li>
-                    <li class=""><a href="#tab_2" data-toggle="tab" aria-expanded="false">关注</a></li>
-                    <li class=""><a href="#tab_3" data-toggle="tab" aria-expanded="false">粉丝</a></li>
+                    <li class=""><a href="#tab_2" data-toggle="tab" aria-expanded="false">お気に入り</a></li>
+                    <li class=""><a href="#tab_3" data-toggle="tab" aria-expanded="false">フォロワー</a></li>
                 </ul>
                 <div class="tab-content">
                     <div class="tab-pane active" id="tab_1">
@@ -31,7 +31,7 @@
                         @foreach($susers as $user)
                         <div class="blog-post" style="margin-top: 30px">
                             <p class="">{{$user->name}}</p>
-                            <p class="">关注：{{$user->stars_count}} | 粉丝：{{$user->fans_count}}｜ 文章：{{$user->posts_count}}</p>
+                            <p class="">お気に入り：{{$user->stars_count}} | フォロワー：{{$user->fans_count}}｜ 文章：{{$user->posts_count}}</p>
 
                            @include('user.badges.like',['target_user'=>$user])
 
@@ -44,7 +44,7 @@
                         @foreach($fusers as $user)
                         <div class="blog-post" style="margin-top: 30px">
                             <p class="">{{$user->name}}</p>
-                            <p class="">关注：{{$user->stars_count}} | 粉丝：{{$user->fans_count}}｜ 文章：{{$user->posts_count}}</p>
+                            <p class="">お気に入り：{{$user->stars_count}} | フォロワー：{{$user->fans_count}}｜ 文章：{{$user->posts_count}}</p>
 
                             @include('user.badges.like',['target_user'=>$user])
 

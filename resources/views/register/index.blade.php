@@ -35,18 +35,18 @@
 
     <form class="form-signin" method="POST" action="{{asset('/register')}}">
        {{csrf_field()}}
-        <h2 class="form-signin-heading">请注册</h2>
-        <label for="name" class="sr-only">名字</label>
-        <input type="text" name="name" id="name" class="form-control" placeholder="名字" required autofocus>
-        <label for="inputEmail" class="sr-only">邮箱</label>
-        <input type="email" name="email" id="inputEmail" class="form-control" placeholder="邮箱" required autofocus>
-        <label for="inputPassword" class="sr-only">密码</label>
-        <input type="password" name="password" id="inputPassword" class="form-control" placeholder="输入密码" required>
-        <label class="sr-only">重复密码</label>
-        <input type="password" name="password_confirmation" class="form-control" placeholder="重复输入密码" required>
+        <h2 class="form-signin-heading">新規メーバー登録</h2>
+        <label for="name" class="sr-only">名前</label>
+        <input type="text" name="name" id="name" class="form-control" placeholder="名前" required autofocus>
+        <label for="inputEmail" class="sr-only">メール</label>
+        <input type="email" name="email" id="inputEmail" class="form-control" placeholder="メール" required autofocus>
+        <label for="inputPassword" class="sr-only">パスワード</label>
+        <input type="password" name="password" id="inputPassword" class="form-control" placeholder="パスワードをご入力ください" required>
+        <label class="sr-only">パスワードをもう一度入力</label>
+        <input type="password" name="password_confirmation" class="form-control" placeholder="パスワードをもう一度入力してください" required>
 
         @include('layout.error')
-        <button class="btn btn-lg btn-primary btn-block" type="submit">注册</button>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">新規メーバー登録</button>
     </form>
 
 </div> <!-- /container -->

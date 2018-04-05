@@ -28,7 +28,7 @@
 
             <div class="panel panel-default">
                 <!-- Default panel contents -->
-                <div class="panel-heading">评论</div>
+                <div class="panel-heading">コメント</div>
 
                 <!-- List group -->
                 <ul class="list-group">
@@ -45,7 +45,7 @@
 
             <div class="panel panel-default">
                 <!-- Default panel contents -->
-                <div class="panel-heading">发表评论</div>
+                <div class="panel-heading">コメントを書く</div>
 
                 <!-- List group -->
                 <ul class="list-group">
@@ -54,7 +54,7 @@
                         <li class="list-group-item">
                             <textarea name="content" class="form-control" rows="10"></textarea>
                             @include('layout.error')
-                            <button class="btn btn-default" type="submit">提交</button>
+                            <button class="btn btn-default" type="submit">送信</button>
                         </li>
                     </form>
 
