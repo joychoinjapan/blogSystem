@@ -29,9 +29,9 @@ Route::group(['prefix'=>'admin'],function(){
         //management users list
         Route::get('/users','\App\Admin\Controllers\UserController@index');
 
-        //create users
+        //create users page
         Route::get('/users/create','\App\Admin\Controllers\UserController@create');
-        //store users
+        //store users activity
         Route::post('/users/store','\App\Admin\Controllers\UserController@store');
 
         //Review
