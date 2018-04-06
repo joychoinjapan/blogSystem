@@ -20,7 +20,7 @@
                         @foreach($posts as $post)
                         <div class="blog-post" style="margin-top: 30px">
                             <p class=""><a href="{{asset('/user')}}/{{$user->id}}">{{$post->user->name}}</a>{{$post->created_at->diffForHumans()}}</p>
-                            <p class=""><a href="{{asset('/post')}}/{{$post->id}}" >{{$post->title}}</a></p>
+                            <p class=""><a href="{{asset('/posts')}}/{{$post->id}}" >{{$post->title}}</a></p>
                             <p> {!!str_limit($post->content,100,'...') !!}</p>
                         </div>
                             @endforeach
