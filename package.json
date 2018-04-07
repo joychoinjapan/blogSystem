@@ -17,5 +17,8 @@
     "laravel-mix": "^1.0",
     "lodash": "^4.17.5",
     "vue": "^2.5.16"
+  },
+  "dependencies": {
+    "npm-check-updates": "^2.14.1"
   }
 }
