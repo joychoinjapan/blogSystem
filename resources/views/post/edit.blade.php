@@ -5,14 +5,14 @@
                 {{method_field("PUT")}}
                 {{csrf_field()}}
                 <div class="form-group">
-                    <label>标题1</label>
+                    <label>タイトル</label>
                     <input name="title" type="text" class="form-control" placeholder="ここはタイトルです" value="{{$post->title}}">
                 </div>
                 <div class="form-group">
-                    <label>内容1</label>
+                    <label>内容</label>
                     <textarea id="content" name="content" class="form-control" style="height:400px;max-height:500px;"  placeholder="ここは内容です">{{$post->content}}</textarea>
                     @include('layout.error')
-                    <button type="submit" class="btn btn-default">投稿</button>
+                    <button type="submit" class="btn btn-default">送信</button>
                 </div>
             </form>
             <br>

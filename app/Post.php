@@ -96,10 +96,16 @@ class Post extends Model
         });
     }
 
+
+    /**
+     * 審査済で通過された文章と未審査の文章をページに表示、審査に通過しなかった文章だけを表示する
+     *
+     */
     protected static function boot()
     {
-        parent::boot(); //
+        parent::boot();
 
+        //
         static::addGlobalScope("available",function (Builder $builder){
             $builder->whereIn('status',[0,1]);
         });
