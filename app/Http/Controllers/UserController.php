@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\User;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -33,8 +34,12 @@ class UserController extends Controller
         }
 
         if($request->file('avatar')){
+
+            $files = Storage::allfiles($user->id);
+            Storage::delete($files);
             $path=$request->file('avatar')->storePublicly($user->id);
             $user->avatar=asset('/storage').'/'.$path;
+
         }
 
         $user->save();
